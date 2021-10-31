@@ -20,6 +20,8 @@ contract MyNFT is ERC721URIStorage {
     string[] secondWords = ["car", "blanket","couch", "computer", "chair"];
     string[] thirdWords = ["walking", "driving", "sleeping", "forging", "drinking"];
 
+    event NewNFTMinted(address sender, uint256 tokenId);
+
     // pass name of nft token and symbol
     constructor() ERC721("TravelNFT", "RBK") {
         console.log("This is my NFT contract.");
@@ -93,5 +95,6 @@ contract MyNFT is ERC721URIStorage {
 
         //increase count
         _tokenIds.increment();
+        emit NewNFTMinted(msg.sender, newItemId);
     }
 }
